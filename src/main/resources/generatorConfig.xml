@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration 
+	PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+	"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration> 
+		<!-- 
+        <classPathEntry location="F:\work\platform\platform-demo\target\talent-platform-demo\WEB-INF\lib\mysql-connector-java-5.1.11.jar" />  
+       -->
+       
+	<context id="OralceTables" targetRuntime="MyBatis3">
+	    <commentGenerator type="com.etong.MyBatisTool.MyCommentGenerator">
+	      <property name="suppressAllComments" value="true" />
+	      <property name="suppressDate" value="false" />
+	    </commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/employees"
+			userId="root"
+			password="123456"
+			>
+			<property name="remarksReporting" value="true"/>
+		</jdbcConnection>
+
+		<!--<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+						connectionURL="jdbc:oracle:thin:@(DESCRIPTION =(ADDRESS_LIST =(LOAD_BALANCE = on )(FAILOVER = ON )(ADDRESS = (PROTOCOL = TCP )(HOST = 192.168.0.8 )( PORT = 1522 ))(ADDRESS = (PROTOCOL = TCP )(HOST = 192.168.0.9 )( PORT = 1522 )))(CONNECT_DATA =(SERVICE_NAME = db03.dgo.etong.com)(server = DEDICATED )))"
+						userId="ET_PRODUCTS_V4"
+						password="(*Ysd23!"
+		>
+			<property name="remarksReporting" value="true"/>
+		</jdbcConnection>-->
+        
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />  
+		</javaTypeResolver>  
+				 
+         <!-- generate Model -->  
+         <javaModelGenerator targetPackage="com.etong.mall.domain" targetProject="src/main/java">  
+             <property name="enableSubPackages" value="true" />  
+             <property name="trimStrings" value="true" />  
+         </javaModelGenerator>
+         
+            <!-- generate xml -->  
+            <sqlMapGenerator targetPackage="com.etong.mall.mybatis"  targetProject="src\main\resources\mybatis">  
+                <property name="enableSubPackages" value="true" />  
+            </sqlMapGenerator>  
+              
+            <!-- generate Mapper -->  
+            <javaClientGenerator type="XMLMAPPER" targetPackage="com.etong.mall.dao"  targetProject="src/main/java">  
+                <property name="enableSubPackages" value="true" />  
+            </javaClientGenerator>
+            <!-- 
+            <table schema="" tableName="Member" domainObjectName="Member" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            	<property name="useActualColumnNames" value="false"/> 
+            </table>
+             -->
+            <table schema="" tableName="departments" domainObjectName="CommonGoodsVO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            	<property name="useActualColumnNames" value="false"/> 
+            </table>
+            <!-- <table schema="" tableName="wss_store_agreement" domainObjectName="WSSStoreAgreementVO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            	<property name="useActualColumnNames" value="false"/> 
+            </table> -->
+	</context>  
+</generatorConfiguration>  
